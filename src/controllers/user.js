@@ -32,7 +32,7 @@ exports.login = async (req, res) => {
           },
         ],
       });
-    const decryptedKey = CryptoJs.AES.decrypt(
+    const decryptedKey = CryptoJS.AES.decrypt(
       user.password,
       process.env.PASSWORD_SECRET_KEY
     ).toString(CryptoJS.enc.Utf8); // decrypt password to compare with the password from the request body
