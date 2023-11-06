@@ -15,7 +15,7 @@ router.post(
     .isLength({ min: 6 })
     .withMessage("Confirm password must be at least 6 characters"),
   body("username").custom((value) => {
-    return User.fineOne({ username: value }).then((user) => {
+    return User.findOne({ username: value }).then((user) => {
       if (user) return Promise.reject("Username already in use");
     });
   }),
