@@ -50,7 +50,8 @@ exports.getOne = async (req, res) => {
         .sort("-position");
       section.tasks = tasks; // section.tasks.concat(tasks);
     }
-    board._doc.sections = sections; 
+    board._doc.sections = sections;
+    res.status.json(board);
   } catch (err) {
     res.status(500).json(err);
   }
