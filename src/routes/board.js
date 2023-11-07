@@ -9,4 +9,15 @@ router.post("/", tokenHandler.verifyToken, boardController.create);
 router.get("/", tokenHandler.verifyToken, boardController.getAll);
 
 router.put("/", tokenHandler.verifyToken, boardController.updatePostion);
+router.get(
+  "/:boardId",
+  param("boardId").custom((value) => {
+    if (!validation.isObjectId(value)) {
+      return Promise.reject("invalid id");
+    } else return Promise.resolve();
+  }),
+  validation.validate,
+  tokenHandler.verifyToken,
+  boardController.getOne
+);
 module.exports = router;

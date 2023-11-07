@@ -37,3 +37,21 @@ exports.updatePostion = async (req, res) => {
     res.status(500).json(err);
   }
 };
+
+exports.getOne = async (req, res) => {
+  const { boardId } = req.params;
+  try {
+    const board = await Board.findOne({ user: req.user._id, _id: boardId });
+    if (!board) return res.status(404).json({ message: "Board not found" });
+    const sections = await Section.find({ board: boardId });
+    for (const section of sections) {
+      const tasks = await Task.find({ section: section._id })
+        .populate("section")
+        .sort("-position");
+      section.tasks = tasks; // section.tasks.concat(tasks);
+    }
+    board._doc.sections = sections; 
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
