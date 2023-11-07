@@ -10,6 +10,10 @@ const boardSchema = new Schema(
       ref: "User",
       required: true,
     },
+    icon: {
+      type: String,
+      default: "❀",
+    },
     title: {
       type: String,
       default: "Untitled",
