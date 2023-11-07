@@ -3,6 +3,6 @@ const auth = require("./auth");
 const board = require("./board");
 
 router.use("/auth", auth);
-router.use("/board", board);
+router.use("/boards", board);
 
 module.exports = router;
