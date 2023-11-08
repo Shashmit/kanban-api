@@ -10,17 +10,13 @@ const boardSchema = new Schema(
       ref: "User",
       required: true,
     },
-    // icon: {
-    //   type: String,
-    //   default: "❀",
-    // },
     title: {
       type: String,
-      default: 'Untitled',
+      default: "Untitled",
     },
     description: {
       type: String,
-      default: 'Add a description to your board',
+      default: "Add a description to your board",
     },
     position: {
       type: Number,

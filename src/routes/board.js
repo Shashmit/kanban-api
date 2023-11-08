@@ -31,7 +31,7 @@ router.put(
   }),
   validation.validate,
   tokenHandler.verifyToken,
-  boardController.getOne
+  boardController.update
 );
 
 module.exports = router;
