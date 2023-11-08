@@ -62,8 +62,8 @@ exports.update = async (req, res) => {
   const { title, description, favourite } = req.body;
 
   try {
-    if (title === '') req.body.title = 'Untitled';
-    if (description === '') req.body.description = 'Add description here';
+    if (title === "") req.body.title = "Untitled";
+    if (description === "") req.body.description = "Add description here";
     const currentBoard = await Board.findById(boardId);
     if (!currentBoard) return res.status(404).json("Board not found");
 
@@ -90,6 +90,18 @@ exports.update = async (req, res) => {
       new: true,
     });
     res.status(200).json(board);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
+exports.getFavourites = async (req, res) => {
+  try {
+    const favourites = await Board.find({
+      user: req.user._id,
+      favourite: true,
+    }).sort("-favouritePosition");
+    res.status(200).json(favourites);
   } catch (err) {
     res.status(500).json(err);
   }

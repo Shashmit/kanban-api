@@ -33,5 +33,10 @@ router.put(
   tokenHandler.verifyToken,
   boardController.update
 );
+router.get(
+  "/favourites",
+  tokenHandler.verifyToken,
+  boardController.getFavourites
+);
 
 module.exports = router;
