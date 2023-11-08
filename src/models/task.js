@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
 const { schemaOptions } = require("./modelOpt");
 
 const taskSchema = new Schema(

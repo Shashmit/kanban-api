@@ -1,16 +1,13 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
 const { schemaOptions } = require("./modelOpt");
-
 const sectionSchema = new Schema(
   {
-    user: {
+    board: {
       type: Schema.Types.ObjectId,
-      ref: "User",
+      ref: "Board",
       required: true,
     },
-
     title: {
       type: String,
       default: "",
