@@ -21,7 +21,7 @@ const boardSchema = new Schema(
     position: {
       type: Number,
     },
-    favorite: {
+    favourite: {
       type: Boolean,
       default: false,
     },
