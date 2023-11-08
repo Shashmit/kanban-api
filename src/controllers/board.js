@@ -62,8 +62,8 @@ exports.update = async (req, res) => {
   const { title, description, favourite } = req.body;
 
   try {
-    if (title === "") req.body.title = "Untitled";
-    if (description === "") req.body.description = "Add description here";
+    if (title === '') req.body.title = 'Untitled';
+    if (description === '') req.body.description = 'Add description here';
     const currentBoard = await Board.findById(boardId);
     if (!currentBoard) return res.status(404).json("Board not found");
 
